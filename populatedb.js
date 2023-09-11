@@ -59,9 +59,9 @@ async function itemCreate(index, name, desc, price, number, category) {
 async function createCategories() {
   console.log("Adding categories");
   await Promise.all([
-    categoryCreate(0, "Maps"),
-    categoryCreate(1, "Weapons"),
-    categoryCreate(2, "Gems")
+    categoryCreate(0, "Maps", "Buy Maps and discover the Atlas using the map device in your hideout."),
+    categoryCreate(1, "Weapons", "You should know what is expected of you with these objects."),
+    categoryCreate(2, "Gems", "Basically your Skills. Use and combine them wisely.")
   ])
 }
 
