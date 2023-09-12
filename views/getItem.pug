@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+    h1= title 
+    h2= item.name 
+    h3= item.description 
+    h3= item.price 
+    p= item.number_in_stock 
+
+    div 
+        img(src=`${item.url}` alt=`${item.name}`)
+    hr
+    h2 Category 
+    a(href=item.category.url)= item.category.name 
+    hr
+    a(href=item.url+"/update") Update Item 
+    hr
+    a(href=item.url+"/delete") Delete Item

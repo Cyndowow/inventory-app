@@ -1,0 +1,31 @@
+extends layout 
+
+block content 
+    h1= title 
+    form(action="", method="post")
+        label Name 
+            br
+            input(type="text", name="name" required value=item.name)
+        br
+        label Description 
+            br
+            input(type="text", name="description" required value=item.description)
+        br
+        label Category 
+            br
+            select(name="category" required)
+                each category in categories 
+                    if JSON.stringify(category._id) === JSON.stringify(item.category)
+                        option(value=category._id selected) #{category.name}
+                    else 
+                        option(value=category._id) #{category.name}
+        br
+        label Price
+            br
+            input(type="text", name="price" required value=item.price)
+        br
+        label Number in Stock 
+            br
+            input(type="number", name="number_in_stock" required value=item.number_in_stock)
+        br
+        input(type="submit", value="Create")

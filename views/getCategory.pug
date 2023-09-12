@@ -1,0 +1,15 @@
+extends layout 
+
+block content
+    h1=title
+    h2(style="font-size: 24px")= category.name
+    p(style="font-size: 18px")= category.description
+    h2 Items
+    ul
+        each item in items
+            li 
+                a(href=item.url) #{item.name}
+    hr
+    a(href=`${category.url}/update` style="font-size: 16px") Update Category
+    br
+    a(href=`${category.url}/delete` style="font-size: 16px") Delete Category

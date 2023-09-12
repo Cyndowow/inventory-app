@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    h1= title 
+    form(action="", method="post")
+        label Name 
+            br
+            input(type="text", name="name" required)
+        br
+        label Description 
+            br
+            input(type="text", name="description")
+        br
+        input(type="submit", value="Create")
