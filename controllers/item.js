@@ -15,7 +15,7 @@ exports.getItem = function(req, res, next) {
 }
 
 // /item/create
-exports.createItem = function(req, res, next) {
+exports.getCreateItem = function(req, res, next) {
     Category.find({}).then((result) => {
         res.render("getCreateItem", {
             title: "Create Item",
