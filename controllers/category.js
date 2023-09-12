@@ -29,6 +29,11 @@ exports.postCreateCategory = [
         .exists()
         .escape(),
 
+    body("description", "Description must not be empty")
+        .trim()
+        .exists()
+        .escape(),
+
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
 
@@ -74,6 +79,11 @@ exports.postUpdateCategory = [
     .exists()
     .escape(),
 
+    body("description", "Description must not be empty")
+        .trim()
+        .exists()
+        .escape(),
+        
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
 
