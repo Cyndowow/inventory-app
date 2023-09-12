@@ -25,18 +25,18 @@ exports.getCreateItem = function(req, res, next) {
 }
 
 // /item/:id/update
-exports.getUpdateItem = function (req, res, next) {
-    Promise.all([Item.findById(req.params.id), Category.find({})].then(
-        (results) => {
-            console.log(results[0]._id);
-            res.render("getUpdateItem", {
-                title: "Update Item",
-                item: results[0],
-                categories: results[1],
-            })
-        }
-    ))
-}
+exports.getUpdateItem = asyncHandler(async (req, res, next) => {
+    const [item, allCategories] = await Promise.all([
+        Item.findById(req.params.id).exec(),
+        Category.find().exec()
+    ]);
+
+    res.render("getUpdateItem", {
+        title: "Update Item",
+        item: item,
+        categories: allCategories,
+    })
+})
 
 // /item/:id/delete
 exports.getDeleteItem = function(req, res, next) {

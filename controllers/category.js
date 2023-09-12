@@ -7,13 +7,12 @@ const asyncHandler = require("express-async-handler");
 exports.getCategory = asyncHandler(async (req, res, next) => {
     const [items, category] = await Promise.all([
         Item.find({ category: req.params.id }),
-        Category.find({ _id: req.params.id })
+        Category.findById(req.params.id)
     ])
     res.render("getCategory", {
         title: "Category",
         items: items,
-        category: category.name,
-        description: category.description,
+        category: category,
     })
 })
 
@@ -83,7 +82,7 @@ exports.postUpdateCategory = [
         .trim()
         .exists()
         .escape(),
-        
+
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
 
